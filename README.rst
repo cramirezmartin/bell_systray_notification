@@ -20,14 +20,17 @@ Bell Systray Notification Module for Odoo 16
 
 Information
 ===========
+
 Puts a bell in the systray that shows the number of notifications in a badge and allows them to be displayed when clicked.
 
 Dependencies
 ============
+
 It use the `web_notify <https://github.com/OCA/web/tree/16.0/web_notify>`_ module for show the notifications.
 
 Usage
 =====
+
 To send a notification to the user you just need to create a notification, use this code for example:
 
 .. code-block:: python
@@ -56,5 +59,5 @@ To send a notification to the user you just need to create a notification, use t
   * warning
   * info
   * default
-  
+
 * Default value: default

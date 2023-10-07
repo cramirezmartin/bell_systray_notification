@@ -29,7 +29,9 @@ It use the `web_notify <https://github.com/OCA/web/tree/16.0/web_notify>`_ modul
 Usage
 =====
 To send a notification to the user you just need to create a notification, use this code for example:
+
 .. code-block:: python
+
   self.env['bell.systray.notification'].create({
       'user_id': user_id.id,
       'message': message,
@@ -42,13 +44,17 @@ To send a notification to the user you just need to create a notification, use t
 * message: Notification text
 * title: Notification title
 * sticky: If the notification remains fixed or disappears after a few seconds, the values accepted are:
+
   * True
   * False
+
   Default value: True
 * type_default: Notification type. The values that accepted are:
+
   * success
   * danger
   * warning
   * info
   * default
+  
 * Default value: default

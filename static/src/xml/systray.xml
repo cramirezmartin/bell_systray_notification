@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="bell_systray_notification_icon" owl="1">
+        <div>
+            <div class="o_MessagingMenu dropdown">
+                <a href="#" title="Notifications" role="button">
+                    <i class="fa fa-bell" 
+                        role="img"
+                        aria-label="Notifications" 
+                        t-on-click="_onClickBellSystrayNotificationIcon"/>
+                    <span class="o_MessagingMenu_counter badge" 
+                        id="bell_systray_notification_counter_badge">
+                    </span>
+                </a>
+            </div>
+        </div>
+    </t>
+</templates>
+
+
+

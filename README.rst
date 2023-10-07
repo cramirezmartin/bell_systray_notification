@@ -43,6 +43,8 @@ To send a notification to the user you just need to create a notification, use t
       'type_default': type_default,
   })
 
+Every minute the notification icon bell will update showing the number of existing notifications
+
 * user_id.id: Id of the user to whom the notification is sent
 * message: Notification text
 * title: Notification title

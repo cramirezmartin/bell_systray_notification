@@ -14,7 +14,7 @@
         '',
     ],
     'category': 'Uncategorized',
-    'version': '1',
+    'version': '16',
     'depends': ['base', 'web_notify'],
     'installable': True,
     'auto_install': False,

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8 -*-
 ==========
 Bell Systray Notification Module for Odoo 16
 ==========

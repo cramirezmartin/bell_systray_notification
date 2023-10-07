@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Bell Systray Notification</title>
+    <style type="text/css">
+    </style>
+  </head>
+
+  <body>
+    <h1 class="title">Bell Systray Notification</h1>
+    <p>
+      <a href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png"/></a>
+      <a href="https://github.com/cramirezmartin/bell_systray_notification"><img alt="Module: bell_systray_notification" src="https://github.com/cramirezmartin/bell_systray_notification/blob/main/static/description/bell_systray_notification.png?raw=true"/></a>
+    </p>
+  
+    <p><strong>Table of contents</strong></p>
+    
+    <div id="contents">
+      <ul>
+        <li><a href="#information" id="installation">Information</a></li>
+        <li><a href="#dependencies" id="dependencies">Dependencies</a></li>
+        <li><a href="#usage" id="toc-entry-3">Usage</a></li>
+      </ul>
+    </div>
+  
+    <div id="information">
+      <h1>Information</a></h1>
+      <p>Puts a bell in the systray that shows the number of notifications in a badge and allows them to be displayed when clicked.</p>
+    </div>
+    
+    <div id="dependencies">
+      <h1>Dependencies</a></h1>
+      <p>
+        <img alt="web_notify module" src="https://github.com/OCA/web/blob/16.0/web_notify/static/description/icon.png?raw=true" width="16px"/>
+        It use the web_notify module for show the notifications.
+      </p>
+      <p>
+          See: <a href="https://github.com/OCA/web/tree/16.0/web_notify"><img alt="OCA/web" src="https://img.shields.io/badge/github-OCA%2Fweb-lightgray.png?logo=github"/></a>
+      </p>
+    </div>
+  
+    <div id="usage">
+      <h1>Usage</a></h1>
+      <p>To send a notification to the user you just need to create a notification, use this code for example:</p>
+      <pre class="code">
+          self.env['bell.systray.notification'].create({
+            'user_id': user_id.id,
+            'message': message,
+            'title': title,
+            'sticky': sticky,
+            'type_default': type_default,
+        })
+      </pre>
+      <p>
+        <ul>
+          <li>user_id.id: Id of the user to whom the notification is sent</li>
+          <li>message: Notification text</li>
+          <li>title: Notification title</li>
+          <li>sticky: If the notification remains fixed or disappears after a few seconds, the values accepted are:
+            <ul>
+              <li>True</li>
+              <li>False</li>
+            </ul>
+            Default value: True
+          </li>
+          <li>type_default: Notification type. The values that accepted are:
+            <ul>
+              <li>success</li>
+              <li>danger</li>
+              <li>warning</li>
+              <li>info</li>
+              <li>default</li>
+            </ul>
+            Default value: default
+          </li>
+        </ul>
+      </p>
+    </div>
+
+  </body>
+</html>

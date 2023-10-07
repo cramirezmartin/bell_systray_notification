@@ -8,7 +8,7 @@
 
     'author': "Carlos Enrique Ramírez Martín",
     'maintainer': '',
-    'website': 'https://github.com/cramirezmartin/bell_systray_notification',
+    'website': "https://github.com/cramirezmartin/bell_systray_notification",
     'license': 'AGPL-3',
     'contributors': [
         '',

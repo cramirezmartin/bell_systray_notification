@@ -45,12 +45,12 @@
       <h1>Usage</a></h1>
       <p>To send a notification to the user you just need to create a notification, use this code for example:</p>
       <pre class="code">
-          self.env['bell.systray.notification'].create({
-            'user_id': user_id.id,
-            'message': message,
-            'title': title,
-            'sticky': sticky,
-            'type_default': type_default,
+        self.env['bell.systray.notification'].create({
+          'user_id': user_id.id,
+          'message': message,
+          'title': title,
+          'sticky': sticky,
+          'type_default': type_default,
         })
       </pre>
       <p>

@@ -113,7 +113,18 @@ The method show_notification show the notifications using the `web_notify <https
 
 * static/src/js/systray.js
 
-Inside the 'setup' function in 'bellSystrayNotificationsIcon' class the next code ask every 60000 ms the number of notifications and show this value in 'bell_systray_notification_counter_badge' element.
+Inside the 'setup' function in 'bellSystrayNotificationsIcon' class the variables define are:
+
+.. code-block:: javascript
+
+    this.action = useService("action"); 
+    this.rpc = useService("rpc");
+
+    const onwillstart = async () => {return await this.rpc("/get_bell_systray_notification_counter", {});};
+    const showNotifications = async () => {await this.rpc("/show_bell_systray_notification", {});};
+    this.showNotifications = showNotifications;
+
+The next code ask every 60000 ms the number of notifications and show this value in 'bell_systray_notification_counter_badge' element.
 
 .. code-block:: javascript
 

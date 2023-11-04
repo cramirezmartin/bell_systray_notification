@@ -180,6 +180,12 @@ Is the xml view for the bell
 
 .. |badge3| image:: https://github.com/cramirezmartin/bell_systray_notification/blob/main/static/description/screenshot.png?raw=true
             :target: https://github.com/cramirezmartin/bell_systray_notification/blob/main/static/description/screenshot.png
-            :alt: Module: Screenshot
+            :alt: Module: Number of notifications
+
+.. |badge4| image:: https://github.com/cramirezmartin/bell_systray_notification/blob/main/static/description/screenshot2.png?raw=true
+            :target: https://github.com/cramirezmartin/bell_systray_notification/blob/main/static/description/screenshot2.png
+            :alt: Module: Show the notifications
 
 |badge3|
+
+|badge4|

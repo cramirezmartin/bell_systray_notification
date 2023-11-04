@@ -139,7 +139,7 @@ The next code ask every 60000 ms the number of notifications and show this value
 
 To modify the time in which the number of notifications is updated, you must modify the Timer changing the value 60000 to the desired value in ms.
 
-The next code insde the 'setup' function allow obtain the number when page is loaded.
+The next code insde the 'setup' function allow obtain the number when page is loaded. Is the same code that execute inside the previous 'Interval' every minute.
 
 .. code-block:: javascript
 

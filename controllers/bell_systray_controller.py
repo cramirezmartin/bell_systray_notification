@@ -7,13 +7,16 @@ class BellSystrayController(http.Controller):
     def get_notification_counter(self, **kw):
         env = http.request.env
         notifications = env['bell.systray.notification'].search([('user_id', '=', env.uid), ('status', '=', 'new')])
-        return len(notifications)
+        number = len(notifications)
+        print('----------- Notifications: '+str(number)+' -----------')
+        return number
     
     @http.route('/show_bell_systray_notification', auth='user', type='json', website=True)
     def show_notification(self, **kw):
         env = http.request.env
         notifications = env['bell.systray.notification'].search([('user_id', '=', env.uid), ('status', '=', 'new')])
-        if len(notifications) != 0:
+        number = len(notifications)
+        if number != 0:
             for n in notifications:
                 if n.type_default:
                     if n.type_default == 'success':
@@ -30,5 +33,6 @@ class BellSystrayController(http.Controller):
                     env.user.notify_default(message=n.message, title=n.title, sticky=n.sticky)
             notifications.write({'status': 'read'})
         else:
-            env.user.notify_warning(message="There are no notifications for you")
+            env.user.notify_info(message="There are no notifications for you")
+        print('----------- Show '+str(number)+' Notifications -----------')
         return True

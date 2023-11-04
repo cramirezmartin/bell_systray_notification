@@ -24,7 +24,7 @@ class bellSystrayNotificationsIcon extends Component {
         onwillstart().then(function (result) {
             let badge = document.getElementById('bell_systray_notification_counter_badge');
             if(result == 0) result = '';
-            if(badge != null) badge.innerHTML = result;;
+            if(badge != null) badge.innerHTML = result;
         });
     }
 

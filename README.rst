@@ -63,3 +63,117 @@ Every minute the notification icon bell will update showing the number of existi
   * default
 
 * Default value: default
+
+Code descripction
+=================
+
+The functionality consists of a counter that counts every minute to a function that returns the number of existing notifications. To do this, only those that belong to the currently logged in user and whose status is 'new' are taken.
+The main characteristics are found in the files:
+
+* conrollers/bell_systray_controller.py
+
+The method get_notification_counter return the number of notifications
+The method show_notification in show the notifications using the `web_notify <https://github.com/OCA/web/tree/16.0/web_notify>`_ module
+
+.. code-block:: python
+
+  @http.route('/get_bell_systray_notification_counter', auth='user', type='json', website=True)
+  def get_notification_counter(self, **kw):
+      env = http.request.env
+      notifications = env['bell.systray.notification'].search([('user_id', '=', env.uid), ('status', '=', 'new')])
+      number = len(notifications)
+      print('----------- Notifications: '+str(number)+' -----------')
+      return number
+
+  @http.route('/show_bell_systray_notification', auth='user', type='json', website=True)
+  def show_notification(self, **kw):
+      env = http.request.env
+      notifications = env['bell.systray.notification'].search([('user_id', '=', env.uid), ('status', '=', 'new')])
+      number = len(notifications)
+      if number != 0:
+          for n in notifications:
+              if n.type_default:
+                  if n.type_default == 'success':
+                      env.user.notify_success(message=n.message, title=n.title, sticky=n.sticky)
+                  elif n.type_default == 'danger':
+                      env.user.notify_danger(message=n.message, title=n.title, sticky=n.sticky)
+                  elif n.type_default == 'warning':
+                      env.user.notify_warning(message=n.message, title=n.title, sticky=n.sticky)
+                  elif n.type_default == 'info':
+                      env.user.notify_info(message=n.message, title=n.title, sticky=n.sticky)
+                  elif n.type_default == 'default':
+                      env.user.notify_default(message=n.message, title=n.title, sticky=n.sticky)
+              else:
+                  env.user.notify_default(message=n.message, title=n.title, sticky=n.sticky)
+          notifications.write({'status': 'read'})
+      else:
+          env.user.notify_info(message="There are no notifications for you")
+      print('----------- Show '+str(number)+' Notifications -----------')
+      return True
+
+* static/src/js/systray.js
+
+Inside the 'setup' function in 'bellSystrayNotificationsIcon' class the next code ask every 60000 ms the number of notifications and show this value in 'bell_systray_notification_counter_badge' element.
+
+.. code-block:: javascript
+
+  setInterval(function(){
+      onwillstart().then(function (result) {
+          let badge = document.getElementById('bell_systray_notification_counter_badge');
+          if(result == 0) result = '';
+          if(badge != null) badge.innerHTML = result;
+      });
+  }, 60000);
+
+
+To modify the time in which the number of notifications is updated, you must modify the Timer changing the value 60000 to the desired value in ms.
+
+The next code insde the 'setup' function allow obtain the number when page is loaded.
+
+.. code-block:: javascript
+
+  onwillstart().then(function (result) {
+      let badge = document.getElementById('bell_systray_notification_counter_badge');
+      if(result == 0) result = '';
+      if(badge != null) badge.innerHTML = result;
+  });
+
+The function '_onClickBellSystrayNotificationIcon' is the action when the bell button is clicked.
+
+.. code-block:: javascript
+
+  _onClickBellSystrayNotificationIcon() {
+      this.showNotifications().then(function (result) {
+          let badge = document.getElementById('bell_systray_notification_counter_badge');
+          if(badge != null) badge.innerHTML = '';
+      });
+  }
+
+* static/src/xml/systray.xml
+
+Is the xml view for the bell
+
+.. code-block:: xml
+
+  <?xml version="1.0" encoding="UTF-8" ?>
+  <templates xml:space="preserve">
+    <t t-name="bell_systray_notification_icon" owl="1">
+      <div>
+        <div class="o_MessagingMenu dropdown">
+          <a href="#" title="Notifications" role="button">
+            <i class="fa fa-bell" 
+              role="img"
+              aria-label="Notifications" 
+              t-on-click="_onClickBellSystrayNotificationIcon"/>
+            <span class="o_MessagingMenu_counter badge" 
+              id="bell_systray_notification_counter_badge">
+            </span>
+          </a>
+        </div>
+      </div>
+    </t>
+  </templates>
+
+* fa fa-bell: Icon using for the button
+* bell_systray_notification_counter_badge: Element that shows the number of notifications
+* _onClickBellSystrayNotificationIcon: Function execute when the button is clicked

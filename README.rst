@@ -73,7 +73,7 @@ The main characteristics are found in the files:
 * conrollers/bell_systray_controller.py
 
 The method get_notification_counter return the number of notifications
-The method show_notification in show the notifications using the `web_notify <https://github.com/OCA/web/tree/16.0/web_notify>`_ module
+The method show_notification show the notifications using the `web_notify <https://github.com/OCA/web/tree/16.0/web_notify>`_ module
 
 .. code-block:: python
 

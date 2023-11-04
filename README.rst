@@ -64,7 +64,7 @@ Every minute the notification icon bell will update showing the number of existi
 
 * Default value: default
 
-Code descripction
+Code description
 =================
 
 The functionality consists of a counter that counts every minute to a function that returns the number of existing notifications. To do this, only those that belong to the currently logged in user and whose status is 'new' are taken.

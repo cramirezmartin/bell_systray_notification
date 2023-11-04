@@ -178,6 +178,8 @@ Is the xml view for the bell
 * bell_systray_notification_counter_badge: Element that shows the number of notifications
 * _onClickBellSystrayNotificationIcon: Function execute when the button is clicked
 
-image:: https://github.com/cramirezmartin/bell_systray_notification/blob/main/static/description/screenshot.png?raw=true
-:target: https://github.com/cramirezmartin/bell_systray_notification/blob/main/static/description/screenshot.png
-:alt: Module: Screenshot
+.. |badge3| image:: https://github.com/cramirezmartin/bell_systray_notification/blob/main/static/description/screenshot.png?raw=true
+            :target: https://github.com/cramirezmartin/bell_systray_notification/blob/main/static/description/screenshot.png
+            :alt: Module: Screenshot
+
+|badge3|

@@ -200,3 +200,12 @@ Is the xml view for the bell
 |badge3|
 
 |badge4|
+
+Note: You need add the next code in your User Class for delete the user notifications when your delete a user
+
+.. code-block:: python
+
+  def unlink(self):
+    for rec in self:
+        self.env['bell.systray.notification'].search([('user_id', '=', rec.id)]).unlink()
+    return super(User, self).unlink()

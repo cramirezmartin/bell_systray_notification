@@ -4,7 +4,7 @@ class BellSystrayNotification(models.Model):
     _name = 'bell.systray.notification'
     _description = 'Bell Systray Notification Model'
     
-    user_id = fields.Many2one(comodel_name='res.users', string='To', required=True)
+    user_id = fields.Many2one(comodel_name='res.users', string='To', required=True, ondelete="cascade")
     status = fields.Selection(string="Status", selection=[('new', 'new'), ('read', 'read')], default='new')
     
     message = fields.Char(string='Message', required=True)

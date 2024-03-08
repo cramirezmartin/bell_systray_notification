@@ -19,6 +19,10 @@
     'installable': True,
     'auto_install': False,
     'application': True,
+    
+    'data': [
+        'security/ir.model.access.csv',
+    ],
 
     'assets': {
         'web.assets_backend': [
